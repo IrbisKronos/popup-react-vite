@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+  display: flex;
+}
+.form {
+  background-color: indianred;
+  width: 50%;
+}
+.popup {
+  background-color: aqua;
+  width: 50%;
+}
