@@ -1,34 +1,53 @@
 import './Form.css';
-import Accordion from '../Accordion/Accordion';
+import Accordion from './Accordion/Accordion';
+import Input from './Input/Input';
+import Select from './Select/Select';
+import Textarea from './Textarea/Textarea';
+import AlignText from './AlignText/AlignText';
+
+/* for Select */
+const options = [
+  { value: 'h2', description: 'Великий' },
+  { value: 'h3', description: 'Більше середнього' },
+  { value: 'h4', description: 'Середній' },
+  { value: 'h5', description: 'Менше середнього' },
+  { value: 'h6', description: 'Малий' },
+];
 
 function Form() {
   return (
-    <div className="form">
-      <form className="banner_setting_form" id="banner_setting_form"></form>
-      <div className="form__container">
-        <div className="components_1 accordion_1">
-          <Accordion>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto
-              dolorem magni autem quas commodi dignissimos harum voluptas
-              laborum neque, eum soluta doloribus impedit necessitatibus ducimus
-              unde sint. Sunt, sed vitae.
-            </p>
-          </Accordion>
-          <Accordion>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto
-              dolorem magni autem quas commodi dignissimos harum voluptas
-              laborum neque, eum soluta doloribus impedit necessitatibus ducimus
-              unde sint. Sunt, sed vitae.
-            </p>
-          </Accordion>
-          <Accordion />
-          <div className="submit__block">
-            <button type="submit" className="submit__button">
-              <p>Зберегти</p>
-            </button>
-          </div>
+    <div className='form'>
+      <form className='banner_setting_form' id='banner_setting_form'></form>
+      <div className='form__container'>
+        <Accordion title='Заголовок' symbol='post_add'>
+          <Input
+            type='text'
+            name='banner[title][content]'
+            id='title-text'
+            label='Заголовок:'
+            placeholder='Введіть заголовок...'
+          />
+          <Select
+            options={options}
+            id='title-size'
+            label='Виберіть розмір заголовка:'
+            name='banner[title][size]'
+          />
+        </Accordion>
+        <Accordion title='Зміст' symbol='description'>
+          <Textarea
+            id='body-text'
+            label='Зміст'
+            name='banner[text][content]'
+            placeholder='Введіть зміст банера...'
+          />
+          <AlignText />
+        </Accordion>
+        <Accordion />
+        <div className='submit__block'>
+          <button type='submit' className='submit__button'>
+            <p>Зберегти</p>
+          </button>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Accordion.css';
 import Icon from './icon.svg';
 
-function Accordion({ children }) {
+function Accordion({ title, symbol, children }) {
   const [toggle, setToggle] = useState(false);
   const [heightEl, setHeightEl] = useState('');
 
@@ -13,18 +13,17 @@ function Accordion({ children }) {
   }, []);
 
   return (
-    <div className="accordion">
+    <div className='accordion'>
       <div
-        /* className={toggle ? 'accordion__visible active' : 'accordion__visible'} */
-        className="accordion__visible"
+        className='accordion__visible'
         style={{ color: toggle ? 'var(--primary)' : 'var(--dark-2)' }}
         onClick={() => setToggle(!toggle)}
       >
-        <div class="accordion__icon">
-          <span class="material-symbols-outlined">post_add</span>
+        <div className='accordion__icon'>
+          <span className='material-symbols-outlined'>{symbol}</span>
         </div>
-        <div className="accordion__title">
-          <span>Спливаючий банер</span>
+        <div className='accordion__title'>
+          <span>{title}</span>
         </div>
 
         <img className={toggle ? 'active' : ''} src={Icon} />
