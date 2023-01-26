@@ -9,17 +9,13 @@ function Accordion({ title, symbol, children }) {
   const refHeight = useRef();
 
   useEffect(() => {
-    setHeightEl(`${refHeight.current.scrollHeight}px`);
+    setHeightEl(`${refHeight.current.scrollHeight + 20}px`);
   }, []);
 
   return (
     <div className='accordion'>
-      <div
-        className='accordion__visible'
-        style={{ color: toggle ? 'var(--primary)' : 'var(--dark-2)' }}
-        onClick={() => setToggle(!toggle)}
-      >
-        <div className='accordion__icon'>
+      <div className='accordion__visible' onClick={() => setToggle(!toggle)}>
+        <div className='accordion__symbol'>
           <span className='material-symbols-outlined'>{symbol}</span>
         </div>
         <div className='accordion__title'>
