@@ -4,6 +4,7 @@ import Input from './Input/Input';
 import Select from './Select/Select';
 import Textarea from './Textarea/Textarea';
 import AlignText from './AlignText/AlignText';
+import Button from './Button/Button';
 
 /* for Select */
 const options = [
@@ -44,11 +45,11 @@ function Form() {
           <AlignText />
         </Accordion>
         <Accordion />
-        <div className='submit__block'>
-          <button type='submit' className='submit__button'>
-            <p>Зберегти</p>
-          </button>
-        </div>
+        <Button
+          className='submit__button'
+          type='submit'
+          description='Зберегти'
+        />
       </div>
     </div>
   );

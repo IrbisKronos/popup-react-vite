@@ -1,0 +1,28 @@
+.submit__button {
+  display: flex;
+  margin: 1rem;
+  width: 80%;
+}
+.submit__button button {
+  height: 3.5rem;
+  width: 100%;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light),
+    inset -0.2rem -0.2rem 1rem var(--primary-dark),
+    0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.3s ease;
+  background: var(--primary);
+  color: var(--greyLight-1);
+}
+
+.submit__button button:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark),
+    inset -0.2rem -0.2rem 1rem var(--primary-light);
+}

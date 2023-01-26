@@ -18,8 +18,16 @@
   font-family: inherit;
   color: var(--greyDark);
 }
-
-.textarea:focus {
+.textarea__item::-moz-placeholder {
+  color: var(--greyLight-3);
+}
+.textarea__item::-ms-input-placeholder {
+  color: var(--greyLight-3);
+}
+.textarea__item::placeholder {
+  color: var(--greyLight-3);
+}
+.textarea__item:focus {
   outline: none;
   box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),
     -0.2rem -0.2rem 0.5rem var(--white);
