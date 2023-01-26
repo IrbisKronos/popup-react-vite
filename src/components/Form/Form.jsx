@@ -5,6 +5,7 @@ import Select from './Select/Select';
 import Textarea from './Textarea/Textarea';
 import AlignText from './AlignText/AlignText';
 import Button from './Button/Button';
+import AnimationBlock from './AnimationBlock/AnimationBlock';
 
 /* for Select */
 const options = [
@@ -44,7 +45,40 @@ function Form() {
           />
           <AlignText />
         </Accordion>
-        <Accordion />
+        <Accordion title='Кнопка' symbol='smart_button'>
+          <Input
+            type='text'
+            name='banner[button][name]'
+            id='button__input'
+            label='Кнопка переходу:'
+            placeholder='Перейти в магазин!'
+          />
+          <Input
+            type='text'
+            name='banner[button][link]'
+            id='link__input'
+            label='Посилання кнопки:'
+            placeholder='https://www.myshop.com/'
+          />
+          <Input
+            type='color'
+            name='banner[button][bg_color]'
+            id='button_bg_color'
+            label='Вибрати колір:'
+          />
+        </Accordion>
+        <Accordion title='Таймер' symbol='timer'>
+          <Input
+            type='text'
+            name='banner[timeout]'
+            id='timeout__input'
+            label='Таймер появи банера:'
+            placeholder='Введіть, через скільки сек.'
+          />
+        </Accordion>
+        <Accordion title='Анімація' symbol='animation'>
+          <AnimationBlock />
+        </Accordion>
         <Button
           className='submit__button'
           type='submit'
