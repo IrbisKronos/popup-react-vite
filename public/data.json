@@ -1,0 +1,32 @@
+{
+  "banner": {
+    "title": {
+      "content": "Заголовок!!!",
+      "size": "h3"
+    },
+    "text": {
+      "content": "Ололоіваіваів"
+    },
+    "align_text": "right",
+    "button": {
+      "name": "Вперед!",
+      "link": "https://www.google.com/",
+      "bg_color": "#fff"
+    },
+    "timeout": "1",
+    "animation": "animate__shakeX",
+    "background": {
+      "color": "#faedcd"
+    },
+    "header": {
+      "title": {
+        "content": "",
+        "size": "h6"
+      },
+      "text": ""
+    },
+    "footer": {
+      "text": ""
+    }
+  }
+}

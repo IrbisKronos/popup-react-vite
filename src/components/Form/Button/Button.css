@@ -1,7 +1,7 @@
 .submit__button {
   display: flex;
   margin: 1rem;
-  width: 80%;
+  justify-items: center;
 }
 .submit__button button {
   height: 3.5rem;

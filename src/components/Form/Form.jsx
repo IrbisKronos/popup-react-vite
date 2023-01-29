@@ -1,3 +1,6 @@
+import deepGet from 'lodash/get';
+import deepSet from 'lodash/set';
+
 import './Form.css';
 import Accordion from './Accordion/Accordion';
 import Input from './Input/Input';
@@ -6,7 +9,7 @@ import Textarea from './Textarea/Textarea';
 import AlignText from './AlignText/AlignText';
 import Button from './Button/Button';
 import AnimationBlock from './AnimationBlock/AnimationBlock';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 /* for Select h1-h6*/
 const options = [
@@ -17,64 +20,103 @@ const options = [
   { value: 'h6', description: 'Малий' },
 ];
 
+function DataBound(ComponentClass) {
+  function DataBoundComponent({ debug, name, context, ...props }) {
+    const contextValue = deepGet(context, name, '');
+    const [value, setValue] = useState(contextValue);
+    useEffect(() => {
+      setValue(contextValue);
+    }, [contextValue]);
+
+    const onChange = useCallback(
+      (e) => {
+        const newValue = e.target.value;
+        deepSet(context, name, newValue);
+        setValue(newValue);
+        if (debug) {
+          console.log(context);
+        }
+      },
+      [context, name]
+    );
+
+    return (
+      <ComponentClass
+        {...props}
+        name={name}
+        value={value}
+        onChange={onChange}
+      />
+    );
+  }
+
+  DataBoundComponent.displayName = `DataBound(${ComponentClass.displayName})`;
+
+  return DataBoundComponent;
+}
+
+const DataBoundInput = DataBound(Input);
+const DataBoundSelect = DataBound(Select);
+const DataBoundTextarea = DataBound(Textarea);
+
 function Form() {
-  const [titleContent, setTitleContent] = useState('');
-  const [titleSize, setTitleSize] = useState('');
-  const [description, setDescription] = useState('');
-  const [alignDescription, setAlignDescription] = useState('');
-  const [buttonContent, setButtonContent] = useState('');
-  const [buttonLink, setButtonLink] = useState('');
-  const [timeout, setTimeout] = useState('');
-  const [animation, setAnimation] = useState('');
+  const [settings, setSettings] = useState({});
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then((res) => res.json())
+      .then((json) => {
+        setSettings(json.banner);
+      })
+      .catch((err) => {
+        console.warn('Помилка при отриманні налаштувань');
+      });
+  }, []);
+
+  const handleInputs = (e) => {
+    const newSettings = { ...settings };
+    deepSet(newSettings, e.target.name, e.target.value);
+    setSettings(newSettings);
+    console.log(newSettings);
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const bannerSettings = {
-      title: {
-        content: titleContent,
-        size: titleSize,
-      },
-    };
-    console.log(bannerSettings);
   };
+
   return (
     <div className='form'>
       <div className='form__container'>
         <form onSubmit={onSubmit}>
           <Accordion title='Заголовок' symbol='post_add'>
-            <Input
+            <DataBoundInput
+              debug
               type='text'
-              name='banner[title][content]'
-              id='title-text'
+              context={settings}
+              name='title.content'
+              id='color'
               label='Заголовок:'
               placeholder='Введіть заголовок...'
-              onChangeValue={(e) => {
-                setTitleContent(e.target.value);
-              }}
-              value={titleContent}
             />
-            <Select
+            <DataBoundSelect
+              debug
               options={options}
               id='title-size'
               label='Виберіть розмір заголовка:'
-              name='banner[title][size]'
-              onChangeValue={(e) => {
-                setTitleSize(e.target.value);
-              }}
+              context={settings}
+              name='title.size'
             />
           </Accordion>
           <Accordion title='Зміст' symbol='description'>
-            <Textarea
+            <DataBoundTextarea
               id='body-text'
               label='Зміст'
-              name='banner[text][content]'
+              context={settings}
+              name='text.content'
               placeholder='Введіть зміст банера...'
-              onChangeValue={(e) => {
-                setDescription(e.target.value);
-              }}
             />
             <AlignText
-              onChangeValue={(e) => {
+              onChange={(e) => {
                 setTitleContent(e.target.value);
               }}
             />
@@ -86,9 +128,6 @@ function Form() {
               id='button__input'
               label='Кнопка переходу:'
               placeholder='Перейти в магазин!'
-              onChangeValue={(e) => {
-                setTitleContent(e.target.value);
-              }}
             />
             <Input
               type='text'
@@ -96,18 +135,12 @@ function Form() {
               id='link__input'
               label='Посилання кнопки:'
               placeholder='https://www.myshop.com/'
-              onChangeValue={(e) => {
-                setTitleContent(e.target.value);
-              }}
             />
             <Input
               type='color'
               name='banner[button][bg_color]'
               id='button_bg_color'
               label='Вибрати колір:'
-              onChangeValue={(e) => {
-                setTitleContent(e.target.value);
-              }}
             />
           </Accordion>
           <Accordion title='Таймер' symbol='timer'>
@@ -117,17 +150,10 @@ function Form() {
               id='timeout__input'
               label='Таймер появи банера:'
               placeholder='Введіть, через скільки сек.'
-              onChangeValue={(e) => {
-                setTitleContent(e.target.value);
-              }}
             />
           </Accordion>
           <Accordion title='Анімація' symbol='animation'>
-            <AnimationBlock
-              onChangeValue={(e) => {
-                setTitleContent(e.target.value);
-              }}
-            />
+            <AnimationBlock />
           </Accordion>
           <Button
             className='submit__button'
