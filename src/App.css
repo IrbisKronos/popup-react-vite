@@ -1,12 +1,19 @@
+:root {
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+  --white: #ffffff;
+  --greyLight-1: #e4ebf5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+  --dark: #6a7693;
+  --dark-2: #5a6582; /* експериментальний */
+  --dark-3: #4d5975; /* експериментальний */
+  --black: #000000;
+}
+
 .App {
   display: flex;
   min-height: 100vh;
-}
-.form {
-  background-color: indianred;
-  width: 50%;
-}
-.popup {
-  background-color: aqua;
-  width: 50%;
 }

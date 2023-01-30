@@ -1,11 +1,11 @@
 import React from 'react';
-import './Textarea.css';
+import styles from './Textarea.module.css';
 
 function Textarea({ id, label, ...props }) {
   return (
-    <div className='textarea'>
+    <div className={styles.textarea}>
       <label htmlFor={id}>{label}</label>
-      <textarea id={id} className='textarea__item' {...props}></textarea>
+      <textarea id={id} className={styles.textareaItem} {...props}></textarea>
     </div>
   );
 }

@@ -1,6 +1,8 @@
+import styles from './Popup.module.css';
+
 function Popup() {
   return (
-    <div className="popup">
+    <div className={styles.popup}>
       <p>Popup</p>
     </div>
   );

@@ -3,7 +3,7 @@
   display: block;
   margin: 0.5rem;
 }
-.textarea__item {
+.textareaItem {
   width: 100%;
   height: 6rem;
   border: none;
@@ -18,16 +18,16 @@
   font-family: inherit;
   color: var(--greyDark);
 }
-.textarea__item::-moz-placeholder {
+.textareaItem::-moz-placeholder {
   color: var(--greyLight-3);
 }
-.textarea__item::-ms-input-placeholder {
+.textareaItem::-ms-input-placeholder {
   color: var(--greyLight-3);
 }
-.textarea__item::placeholder {
+.textareaItem::placeholder {
   color: var(--greyLight-3);
 }
-.textarea__item:focus {
+.textareaItem:focus {
   outline: none;
   box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),
     -0.2rem -0.2rem 0.5rem var(--white);

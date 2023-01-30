@@ -1,7 +1,7 @@
 import deepGet from 'lodash/get';
 import deepSet from 'lodash/set';
 
-import './Form.css';
+import styles from './Form.module.css';
 import Accordion from './Accordion/Accordion';
 import Input from './Input/Input';
 import Select from './Select/Select';
@@ -73,20 +73,13 @@ function Form() {
       });
   }, []);
 
-  const handleInputs = (e) => {
-    const newSettings = { ...settings };
-    deepSet(newSettings, e.target.name, e.target.value);
-    setSettings(newSettings);
-    console.log(newSettings);
-  };
-
   const onSubmit = (e) => {
     e.preventDefault();
   };
 
   return (
-    <div className='form'>
-      <div className='form__container'>
+    <div className={styles.form}>
+      <div className={styles.formContainer}>
         <form onSubmit={onSubmit}>
           <Accordion title='Заголовок' symbol='post_add'>
             <DataBoundInput

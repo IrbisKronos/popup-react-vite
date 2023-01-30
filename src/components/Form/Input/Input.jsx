@@ -1,9 +1,9 @@
 import React from 'react';
-import './Input.css';
+import styles from './Input.module.css';
 
 function Input({ id, label, ...rest }) {
   return (
-    <div className='input'>
+    <div className={styles.input}>
       <label htmlFor={id}>{label}</label>
       <input id={id} {...rest} />
     </div>
