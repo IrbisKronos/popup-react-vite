@@ -1,51 +1,58 @@
 import React from 'react';
 import './AlignText.css';
+import AlignInput from './AlignInput/AlignInput';
 
-function AlignText() {
+function AlignText({ context, DataBound }) {
+  const DataBoundAlignInput = DataBound(AlignInput);
+
   return (
-    <div className='segmented-control' id='align_text_select'>
-      <input
+    <div className='segmentedControl' id='align_text_select'>
+      <DataBoundAlignInput
+        debug
         type='radio'
-        name='banner[align_text]'
+        name='alignText'
         value='left'
-        id='header__left'
+        id='headerLeft'
+        icon='format_align_left'
+        className='segmentedControl1'
+        context={context}
         defaultChecked
       />
-      <label htmlFor='header__left' className='segmented-control__1'>
-        <span className='material-symbols-outlined'>format_align_left</span>
-      </label>
 
-      <input
+      <DataBoundAlignInput
+        debug
         type='radio'
-        name='banner[align_text]'
+        name='alignText'
         value='center'
-        id='header__center'
+        id='headerCenter'
+        icon='format_align_center'
+        className='segmentedControl2'
+        context={context}
       />
-      <label htmlFor='header__center' className='segmented-control__2'>
-        <span className='material-symbols-outlined'>format_align_center</span>
-      </label>
 
-      <input
+      <DataBoundAlignInput
+        debug
         type='radio'
-        name='banner[align_text]'
+        name='alignText'
         value='right'
-        id='header__right'
+        id='headerRight'
+        icon='format_align_right'
+        className='segmentedControl3'
+        context={context}
       />
-      <label htmlFor='header__right' className='segmented-control__3'>
-        <span className='material-symbols-outlined'>format_align_right</span>
-      </label>
 
-      <input
+      <DataBoundAlignInput
+        debug
         type='radio'
-        name='banner[align_text]'
+        name='alignText'
         value='justify'
-        id='header__justify'
+        id='headerJustify'
+        icon='format_align_justify'
+        className='segmentedControl4'
+        context={context}
       />
-      <label htmlFor='header__justify' className='segmented-control__4'>
-        <span className='material-symbols-outlined'>format_align_justify</span>
-      </label>
 
-      <div className='segmented-control__color'></div>
+      <div className='segmentedControlColor'></div>
     </div>
   );
 }

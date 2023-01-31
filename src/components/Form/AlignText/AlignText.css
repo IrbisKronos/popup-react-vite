@@ -1,4 +1,4 @@
-.segmented-control {
+.segmentedControl {
   width: 27.2rem;
   height: 4rem;
   box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),
@@ -10,19 +10,19 @@
   position: relative;
 }
 
-.segmented-control input {
+.segmentedControl input {
   display: none;
 }
 
-.segmented-control > input:checked + label {
+.segmentedControl > input:checked + label {
   transition: all 0.5s ease;
   color: var(--primary);
 }
 
-.segmented-control__1,
-.segmented-control__2,
-.segmented-control__3,
-.segmented-control__4 {
+.segmentedControl1,
+.segmentedControl2,
+.segmentedControl3,
+.segmentedControl4 {
   width: 6.8rem;
   height: 3.6rem;
   font-size: 1.4rem;
@@ -34,14 +34,14 @@
   transition: all 0.5s ease;
 }
 
-.segmented-control__1:hover,
-.segmented-control__2:hover,
-.segmented-control__3:hover,
-.segmented-control__4:hover {
+.segmentedControl1:hover,
+.segmentedControl2:hover,
+.segmentedControl3:hover,
+.segmentedControl4:hover {
   color: var(--primary);
 }
 
-.segmented-control__color {
+.segmentedControlColor {
   position: absolute;
   height: 3.4rem;
   width: 6.2rem;
@@ -52,22 +52,22 @@
   pointer-events: none;
 }
 
-#header__left:checked ~ .segmented-control__color {
+#headerLeft:checked ~ .segmentedControlColor {
   transform: translateX(0);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-#header__center:checked ~ .segmented-control__color {
+#headerCenter:checked ~ .segmentedControlColor {
   transform: translateX(6.8rem);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-#header__right:checked ~ .segmented-control__color {
+#headerRight:checked ~ .segmentedControlColor {
   transform: translateX(13.6rem);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-#header__justify:checked ~ .segmented-control__color {
+#headerJustify:checked ~ .segmentedControlColor {
   transform: translateX(20.4rem);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }

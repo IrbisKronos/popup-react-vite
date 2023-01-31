@@ -7,7 +7,7 @@ import Input from './Input/Input';
 import Select from './Select/Select';
 import Textarea from './Textarea/Textarea';
 import AlignText from './AlignText/AlignText';
-import Button from './Button/Button';
+import Button from './Button/SubmitButton';
 import AnimationBlock from './AnimationBlock/AnimationBlock';
 import { useState, useEffect, useCallback } from 'react';
 
@@ -84,75 +84,76 @@ function Form() {
           <Accordion title='Заголовок' symbol='post_add'>
             <DataBoundInput
               debug
-              type='text'
-              context={settings}
               name='title.content'
-              id='color'
+              type='text'
+              id='title-content'
               label='Заголовок:'
               placeholder='Введіть заголовок...'
+              context={settings}
             />
             <DataBoundSelect
               debug
-              options={options}
+              name='title.size'
               id='title-size'
               label='Виберіть розмір заголовка:'
+              options={options}
               context={settings}
-              name='title.size'
             />
           </Accordion>
           <Accordion title='Зміст' symbol='description'>
             <DataBoundTextarea
+              debug
+              name='text.content'
               id='body-text'
               label='Зміст'
-              context={settings}
-              name='text.content'
               placeholder='Введіть зміст банера...'
+              context={settings}
             />
-            <AlignText
-              onChange={(e) => {
-                setTitleContent(e.target.value);
-              }}
-            />
+            <AlignText context={settings} DataBound={DataBound} />
           </Accordion>
           <Accordion title='Кнопка' symbol='smart_button'>
-            <Input
+            <DataBoundInput
+              debug
+              name='button.name'
               type='text'
-              name='banner[button][name]'
               id='button__input'
               label='Кнопка переходу:'
               placeholder='Перейти в магазин!'
+              context={settings}
             />
-            <Input
+            <DataBoundInput
+              debug
+              name='button.link'
               type='text'
-              name='banner[button][link]'
               id='link__input'
               label='Посилання кнопки:'
-              placeholder='https://www.myshop.com/'
+              placeholder='https://www.myShop.com/'
+              context={settings}
             />
-            <Input
+            <DataBoundInput
+              debug
+              name='button.bg-color'
               type='color'
-              name='banner[button][bg_color]'
               id='button_bg_color'
               label='Вибрати колір:'
+              context={settings}
             />
           </Accordion>
           <Accordion title='Таймер' symbol='timer'>
-            <Input
-              type='text'
-              name='banner[timeout]'
+            <DataBoundInput
+              debug
+              name='timeout'
+              type='number'
               id='timeout__input'
               label='Таймер появи банера:'
               placeholder='Введіть, через скільки сек.'
+              context={settings}
             />
           </Accordion>
           <Accordion title='Анімація' symbol='animation'>
             <AnimationBlock />
           </Accordion>
-          <Button
-            className='submit__button'
-            type='submit'
-            description='Зберегти'
-          />
+          <Button type='submit' description='Зберегти' />
         </form>
       </div>
     </div>

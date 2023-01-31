@@ -7,11 +7,11 @@
     "text": {
       "content": "Ололоіваіваів"
     },
-    "align_text": "right",
+    "alignText": "right",
     "button": {
       "name": "Вперед!",
       "link": "https://www.google.com/",
-      "bg_color": "#fff"
+      "bg-color": "#fff"
     },
     "timeout": "1",
     "animation": "animate__shakeX",

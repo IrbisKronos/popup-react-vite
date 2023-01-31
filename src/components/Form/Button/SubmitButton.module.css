@@ -1,9 +1,9 @@
-.submit__button {
+.submitButton {
   display: flex;
   margin: 1rem;
   justify-items: center;
 }
-.submit__button button {
+.submitButton button {
   height: 3.5rem;
   width: 100%;
   font-size: 1.2rem;
@@ -22,7 +22,7 @@
   color: var(--greyLight-1);
 }
 
-.submit__button button:active {
+.submitButton button:active {
   box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark),
     inset -0.2rem -0.2rem 1rem var(--primary-light);
 }
