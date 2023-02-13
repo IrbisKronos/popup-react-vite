@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Select.module.css';
 
-function Select({ options, id, label, name, onChange }) {
+export default function Select({ options, id, label, name, onChange }) {
   return (
     <div className={styles.select}>
       <label htmlFor={id}>{label}</label>
@@ -21,5 +21,3 @@ function Select({ options, id, label, name, onChange }) {
     </div>
   );
 }
-
-export default Select;

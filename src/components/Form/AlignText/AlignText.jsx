@@ -2,7 +2,7 @@ import React from 'react';
 import './AlignText.css';
 import AlignInput from './AlignInput/AlignInput';
 
-function AlignText({ context, DataBound }) {
+export default function AlignText({ context, DataBound }) {
   const DataBoundAlignInput = DataBound(AlignInput);
 
   return (
@@ -56,5 +56,3 @@ function AlignText({ context, DataBound }) {
     </div>
   );
 }
-
-export default AlignText;

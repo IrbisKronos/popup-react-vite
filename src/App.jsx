@@ -2,7 +2,7 @@ import './App.css';
 import Popup from './components/Popup/Popup';
 import Form from './components/Form/Form';
 
-function App() {
+export default function App() {
   return (
     <div className='App'>
       <Form />
@@ -10,5 +10,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

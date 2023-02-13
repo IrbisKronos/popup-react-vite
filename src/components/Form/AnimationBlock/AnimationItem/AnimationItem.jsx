@@ -1,7 +1,7 @@
 import React from 'react';
 import './AnimationItem.css';
 
-function AnimationItem() {
+export default function AnimationItem() {
   return (
     <div
       className='animation_block animate__animated'
@@ -20,5 +20,3 @@ function AnimationItem() {
     </div>
   );
 }
-
-export default AnimationItem;

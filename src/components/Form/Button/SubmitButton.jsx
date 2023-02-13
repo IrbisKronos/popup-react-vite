@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SubmitButton.module.css';
 
-function Button({ type, description }) {
+export default function Button({ type, description }) {
   return (
     <div className={styles.submitButton}>
       <button type={type}>
@@ -10,5 +10,3 @@ function Button({ type, description }) {
     </div>
   );
 }
-
-export default Button;

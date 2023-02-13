@@ -1,7 +1,7 @@
 import React from 'react';
 import './AlignInput.css';
 
-function AlignInput({ id, icon, className, ...rest }) {
+export default function AlignInput({ id, icon, className, ...rest }) {
   return (
     <>
       <input id={id} {...rest} />
@@ -11,5 +11,3 @@ function AlignInput({ id, icon, className, ...rest }) {
     </>
   );
 }
-
-export default AlignInput;

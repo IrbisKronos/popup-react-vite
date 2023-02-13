@@ -59,7 +59,7 @@ const DataBoundInput = DataBound(Input);
 const DataBoundSelect = DataBound(Select);
 const DataBoundTextarea = DataBound(Textarea);
 
-function Form() {
+export default function Form() {
   const [settings, setSettings] = useState({});
 
   useEffect(() => {
@@ -159,5 +159,3 @@ function Form() {
     </div>
   );
 }
-
-export default Form;

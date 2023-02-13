@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './Accordion.module.css';
 import Icon from './icon.svg';
 
-function Accordion({ title, symbol, children }) {
+export default function Accordion({ title, symbol, children }) {
   const [toggle, setToggle] = useState(false);
   const [heightEl, setHeightEl] = useState('');
 
@@ -42,5 +42,3 @@ function Accordion({ title, symbol, children }) {
     </div>
   );
 }
-
-export default Accordion;

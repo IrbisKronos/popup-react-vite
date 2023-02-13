@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Textarea.module.css';
 
-function Textarea({ id, label, ...props }) {
+export default function Textarea({ id, label, ...props }) {
   return (
     <div className={styles.textarea}>
       <label htmlFor={id}>{label}</label>
@@ -9,5 +9,3 @@ function Textarea({ id, label, ...props }) {
     </div>
   );
 }
-
-export default Textarea;
