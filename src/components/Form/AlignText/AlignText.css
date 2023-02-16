@@ -10,9 +10,9 @@
   position: relative;
 }
 
-.segmentedControl input {
+/* .segmentedControl input {
   display: none;
-}
+} */
 
 .segmentedControl > input:checked + label {
   transition: all 0.5s ease;
