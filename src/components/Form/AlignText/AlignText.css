@@ -10,9 +10,9 @@
   position: relative;
 }
 
-/* .segmentedControl input {
-  display: none;
-} */
+.segmentedControl input {
+  /* display: none; */
+}
 
 .segmentedControl > input:checked + label {
   transition: all 0.5s ease;
@@ -52,22 +52,22 @@
   pointer-events: none;
 }
 
-#headerLeft:checked ~ .segmentedControlColor {
+#left:checked ~ .segmentedControlColor {
   transform: translateX(0);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-#headerCenter:checked ~ .segmentedControlColor {
+#center:checked ~ .segmentedControlColor {
   transform: translateX(6.8rem);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-#headerRight:checked ~ .segmentedControlColor {
+#right:checked ~ .segmentedControlColor {
   transform: translateX(13.6rem);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-#headerJustify:checked ~ .segmentedControlColor {
+#justify:checked ~ .segmentedControlColor {
   transform: translateX(20.4rem);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }

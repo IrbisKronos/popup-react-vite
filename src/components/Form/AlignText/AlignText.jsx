@@ -1,52 +1,56 @@
 import React from 'react';
 import './AlignText.css';
-import AlignInput from './AlignInput/AlignInput';
+import deepGet from 'lodash/get';
 
-export default function AlignText({ context, DataBound }) {
-  const DataBoundAlignInput = DataBound(AlignInput);
-
+export default function AlignText({ settings, onChange }) {
   return (
     <div className='segmentedControl' id='align_text_select'>
-      <DataBoundAlignInput
-        debug
+      <input
+        type='radio'
+        name='alignText'
+        id='left'
         value='left'
-        id='headerLeft'
-        icon='format_align_left'
-        className='segmentedControl1'
-        context={context}
-        defaultChecked={context.alignText === 'left'}
+        onChange={onChange}
+        defaultChecked={settings.alignText === 'left'}
       />
-
-      <DataBoundAlignInput
-        debug
+      <label htmlFor='left' className='segmentedControl1'>
+        <span className='material-symbols-outlined'>format_align_left</span>
+      </label>
+      <input
+        type='radio'
+        name='alignText'
+        id='center'
         value='center'
-        id='headerCenter'
-        icon='format_align_center'
-        className='segmentedControl2'
-        context={context}
-        defaultChecked={context.alignText === 'center'}
+        onChange={onChange}
+        defaultChecked={
+          settings.alignText ? console.log(settings.alignText) : ''
+        }
       />
-
-      <DataBoundAlignInput
-        debug
+      <label htmlFor='center' className='segmentedControl2'>
+        <span className='material-symbols-outlined'>format_align_center</span>
+      </label>
+      <input
+        type='radio'
+        name='alignText'
+        id='right'
         value='right'
-        id='headerRight'
-        icon='format_align_right'
-        className='segmentedControl3'
-        context={context}
-        defaultChecked={context.alignText === 'right'}
+        onChange={onChange}
+        defaultChecked={settings.alignText === 'right'}
       />
-
-      <DataBoundAlignInput
-        debug
+      <label htmlFor='right' className='segmentedControl3'>
+        <span className='material-symbols-outlined'>format_align_right</span>
+      </label>
+      <input
+        type='radio'
+        name='alignText'
+        id='justify'
         value='justify'
-        id='headerJustify'
-        icon='format_align_justify'
-        className='segmentedControl4'
-        context={context}
-        defaultChecked={context.alignText === 'justify'}
+        onChange={onChange}
+        defaultChecked={settings.alignText === 'justify'}
       />
-
+      <label htmlFor='justify' className='segmentedControl4'>
+        <span className='material-symbols-outlined'>format_align_justify</span>
+      </label>
       <div className='segmentedControlColor'></div>
     </div>
   );
