@@ -10,8 +10,8 @@ export default function AlignText({ settings, onChange }) {
         name='alignText'
         id='left'
         value='left'
-        onChange={onChange}
         defaultChecked={settings.alignText === 'left'}
+        onChange={onChange}
       />
       <label htmlFor='left' className='segmentedControl1'>
         <span className='material-symbols-outlined'>format_align_left</span>
@@ -21,10 +21,8 @@ export default function AlignText({ settings, onChange }) {
         name='alignText'
         id='center'
         value='center'
+        defaultChecked={settings.alignText === 'center'}
         onChange={onChange}
-        defaultChecked={
-          settings.alignText ? console.log(settings.alignText) : ''
-        }
       />
       <label htmlFor='center' className='segmentedControl2'>
         <span className='material-symbols-outlined'>format_align_center</span>
@@ -34,8 +32,8 @@ export default function AlignText({ settings, onChange }) {
         name='alignText'
         id='right'
         value='right'
-        onChange={onChange}
         defaultChecked={settings.alignText === 'right'}
+        onChange={onChange}
       />
       <label htmlFor='right' className='segmentedControl3'>
         <span className='material-symbols-outlined'>format_align_right</span>
@@ -45,8 +43,8 @@ export default function AlignText({ settings, onChange }) {
         name='alignText'
         id='justify'
         value='justify'
-        onChange={onChange}
         defaultChecked={settings.alignText === 'justify'}
+        onChange={onChange}
       />
       <label htmlFor='justify' className='segmentedControl4'>
         <span className='material-symbols-outlined'>format_align_justify</span>

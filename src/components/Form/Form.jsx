@@ -34,14 +34,16 @@ export default function Form() {
   }, []);
 
   const onChange = (e) => {
-    const { value, name } = e.target;
-    setSettings(deepSet(settings, name, value));
+    const { value, name, checked } = e.target;
+
+    setSettings((prevState) => {
+      if (checked) {
+        return deepSet(prevState, name, value);
+      }
+      return prevState;
+    });
 
     console.log('Settings: ', settings);
-  };
-
-  const getDefaultValue = () => {
-    deepGet(settings, name);
   };
 
   const onSubmit = (e) => {
