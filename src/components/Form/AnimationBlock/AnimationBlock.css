@@ -4,5 +4,5 @@
   grid-template-rows: 1fr 1fr 1fr;
   align-content: center;
   justify-items: center;
-  margin: 0.5rem;
+  margin: 0.5rem 0 0 0;
 }

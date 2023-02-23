@@ -1,21 +1,28 @@
 import React from 'react';
+import { useState } from 'react';
 import './AnimationItem.css';
 
-export default function AnimationItem() {
+export default function AnimationItem({ animation, label, labelSimbol }) {
+  const [isAnimating, setIsAnimating] = useState(false);
+  function handleClick(e) {
+    setIsAnimating(true);
+  }
+  function handleAnimationEnd() {
+    setIsAnimating(false);
+  }
+
   return (
     <div
-      className='animation_block animate__animated'
-      data-animate_item_id='animate__shakeX'
+      className={`animation_block animate__animated ${
+        isAnimating ? animation : ''
+      }`}
+      onClick={handleClick}
+      onAnimationEnd={handleAnimationEnd}
     >
-      <input
-        type='radio'
-        name='banner[animation]'
-        value='animate__shakeX'
-        id='animate__shakeX'
-      />
-      <label htmlFor='animate__shakeX' className='animate__label'>
-        <span className='material-symbols-outlined'>all_inclusive</span>
-        <span>ShakeX</span>
+      <input type='radio' name='animation' value={animation} id={animation} />
+      <label htmlFor={animation} className='animate__label'>
+        <span className='material-symbols-outlined'>{labelSimbol}</span>
+        <span>{label}</span>
       </label>
     </div>
   );

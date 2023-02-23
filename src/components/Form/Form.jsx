@@ -8,31 +8,8 @@ import Textarea from './Textarea/Textarea';
 import AlignText from './AlignText/AlignText';
 import Button from './Button/SubmitButton';
 import AnimationBlock from './AnimationBlock/AnimationBlock';
-import { useState, useEffect } from 'react';
 
-/* for Select h1-h6*/
-const options = [
-  { value: 'h2', description: 'Великий' },
-  { value: 'h3', description: 'Більше середнього' },
-  { value: 'h4', description: 'Середній' },
-  { value: 'h5', description: 'Менше середнього' },
-  { value: 'h6', description: 'Малий' },
-];
-
-export default function Form() {
-  const [settings, setSettings] = useState({});
-
-  useEffect(() => {
-    fetch('/data.json')
-      .then((res) => res.json())
-      .then((json) => {
-        setSettings(json.banner);
-      })
-      .catch((err) => {
-        console.warn('Помилка при отриманні налаштувань');
-      });
-  }, []);
-
+export default function Form({ settings, setSettings }) {
   const onChange = (e) => {
     const { value, name, checked } = e.target;
 
@@ -68,7 +45,6 @@ export default function Form() {
               name='title.size'
               id='title-size'
               label='Виберіть розмір заголовка:'
-              options={options}
               onChange={onChange}
               defaultValue={deepGet(settings, 'title.size', '')}
             />

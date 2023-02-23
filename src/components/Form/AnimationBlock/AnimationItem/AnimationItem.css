@@ -1,15 +1,15 @@
 .animation_block {
   width: 8rem;
-  height: 3rem;
+  height: 3.5rem;
   box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),
     -0.2rem -0.2rem 0.5rem var(--white);
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   display: flex;
-  align-self: stretch;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   cursor: pointer;
   margin: 0.5rem;
+  padding: 0.2rem;
   position: relative;
 }
 
@@ -23,8 +23,6 @@
 }
 
 .animation_block .animate__label {
-  width: 4rem;
-  height: 2rem;
   font-size: 1rem;
   display: flex;
   justify-content: center;
@@ -36,4 +34,8 @@
 
 .animation_block .animate__label:hover {
   color: var(--primary);
+}
+
+.material-symbols-outlined {
+  margin: 0 0.3rem 0 0;
 }
