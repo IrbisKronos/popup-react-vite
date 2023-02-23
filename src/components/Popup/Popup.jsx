@@ -15,7 +15,7 @@ export default function Popup({ settings }) {
   const handlePopupClose = () => setIsOpen(false);
 
   const titleContent = deepGet(settings, 'title.content', '');
-  const titleSize = deepGet(settings, 'title.size', 'h3');
+  const titleSize = deepGet(settings, 'title.size');
   const titleSizes = {
     h2: <h2>{titleContent}</h2>,
     h3: <h3>{titleContent}</h3>,
@@ -31,10 +31,13 @@ export default function Popup({ settings }) {
         <div className='popup__body'>
           <div
             className='popup__content animate__animated'
-            style={{ textAlign: settings.alignText }}
+            style={{
+              textAlign: settings.alignText,
+              backgroundColor: deepGet(settings, 'background.color'),
+            }}
           >
             <button className='popup__close' onClick={handlePopupClose}>
-              '&times;'
+              &times;
             </button>
             <div className='popup__title'>{titleElement}</div>
             <div className='popup__text'>
@@ -43,7 +46,9 @@ export default function Popup({ settings }) {
             <a
               href={deepGet(settings, 'button.link', '')}
               className='popup__link'
-              style={{ backgroundСolor: deepGet(settings, 'button.bg-color') }}
+              style={{
+                backgroundСolor: deepGet(settings, 'button.bg-color', '#fff'),
+              }}
             >
               {deepGet(settings, 'button.name', '')}
             </a>

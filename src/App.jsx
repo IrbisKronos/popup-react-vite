@@ -9,12 +9,8 @@ export default function App() {
   useEffect(() => {
     fetch('/data.json')
       .then((res) => res.json())
-      .then((json) => {
-        setSettings(json.banner);
-      })
-      .catch((err) => {
-        console.warn('Помилка при отриманні налаштувань');
-      });
+      .then((json) => setSettings(json.banner))
+      .catch((err) => console.warn('Помилка при отриманні налаштувань:', err));
   }, []);
 
   return (

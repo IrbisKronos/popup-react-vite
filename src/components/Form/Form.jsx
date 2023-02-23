@@ -13,18 +13,30 @@ export default function Form({ settings, setSettings }) {
   const onChange = (e) => {
     const { value, name, checked } = e.target;
 
-    setSettings((prevState) => {
-      if (checked) {
-        return deepSet(prevState, name, value);
+    setSettings(deepSet(settings, name, value));
+
+    /* setSettings((prevState) => {
+      if (type === "checkbox") {
+        return deepSet(prevState, name, checked);
       }
-      return prevState;
-    });
+      return deepSet(prevState, name, value);
+    }); */
 
     console.log('Settings: ', settings);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
+    fetch('/data.json', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ banner: settings }),
+    })
+      .then((res) => res.json())
+      .then((settings) => console.log('POST', settings))
+      .catch((err) => console.warn('Помилка при отриманні налаштувань:', err));
   };
 
   return (
@@ -68,6 +80,7 @@ export default function Form({ settings, setSettings }) {
               label='Кнопка переходу:'
               placeholder='Перейти в магазин!'
               onChange={onChange}
+              defaultValue={deepGet(settings, 'button.name', '')}
             />
             <Input
               name='button.link'
@@ -76,6 +89,7 @@ export default function Form({ settings, setSettings }) {
               label='Посилання кнопки:'
               placeholder='https://www.myShop.com/'
               onChange={onChange}
+              defaultValue={deepGet(settings, 'button.link', '')}
             />
             <Input
               name='button.bgColor'
@@ -83,6 +97,7 @@ export default function Form({ settings, setSettings }) {
               id='button_bg_color'
               label='Вибрати колір:'
               onChange={onChange}
+              defaultValue={deepGet(settings, 'button.bg-color', '')}
             />
           </Accordion>
           <Accordion title='Таймер' symbol='timer'>
@@ -93,6 +108,7 @@ export default function Form({ settings, setSettings }) {
               label='Таймер появи банера:'
               placeholder='Введіть, через скільки сек.'
               onChange={onChange}
+              defaultValue={settings.timeout}
             />
           </Accordion>
           <Accordion title='Анімація' symbol='animation'>

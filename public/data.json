@@ -13,7 +13,7 @@
       "link": "https://www.google.com/",
       "bg-color": "#fff"
     },
-    "timeout": "1",
+    "timeout": "3",
     "animation": "animate__shakeX",
     "background": {
       "color": "#faedcd"
