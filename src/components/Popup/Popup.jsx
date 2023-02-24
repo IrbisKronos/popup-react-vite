@@ -6,14 +6,22 @@ import { useState, useEffect } from 'react';
 export default function Popup({ settings }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  /* Timer */
   useEffect(() => {
-    const toMs = `${settings.timeout}000`;
-    const timer = setTimeout(() => setIsOpen(true), toMs);
+    if (!settings.timeout) {
+      return;
+    }
+    const milliseconds = settings.timeout + '000';
+
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, milliseconds);
     return () => clearTimeout(timer);
   }, [settings.timeout]);
 
   const handlePopupClose = () => setIsOpen(false);
 
+  /* Set title size (h2-h6) with title content */
   const titleContent = deepGet(settings, 'title.content', '');
   const titleSize = deepGet(settings, 'title.size');
   const titleSizes = {
@@ -26,33 +34,31 @@ export default function Popup({ settings }) {
   const titleElement = titleSizes[titleSize];
 
   return (
-    <div className='popupWrapper'>
-      <div className={clsx('popup', isOpen && 'open')}>
-        <div className='popup__body'>
-          <div
-            className='popup__content animate__animated'
+    <div className={clsx('popup', isOpen && 'open')}>
+      <div className='popup__body'>
+        <div
+          className='popup__content animate__animated'
+          style={{
+            textAlign: settings.alignText,
+            backgroundColor: deepGet(settings, 'background.color'),
+          }}
+        >
+          <button className='popup__close' onClick={handlePopupClose}>
+            &times;
+          </button>
+          <div className='popup__title'>{titleElement}</div>
+          <div className='popup__text'>
+            {deepGet(settings, 'text.content', '')}
+          </div>
+          <a
+            href={deepGet(settings, 'button.link', '')}
+            className='popup__link'
             style={{
-              textAlign: settings.alignText,
-              backgroundColor: deepGet(settings, 'background.color'),
+              backgroundСolor: deepGet(settings, 'button.bg-color', '#fff'),
             }}
           >
-            <button className='popup__close' onClick={handlePopupClose}>
-              &times;
-            </button>
-            <div className='popup__title'>{titleElement}</div>
-            <div className='popup__text'>
-              {deepGet(settings, 'text.content', '')}
-            </div>
-            <a
-              href={deepGet(settings, 'button.link', '')}
-              className='popup__link'
-              style={{
-                backgroundСolor: deepGet(settings, 'button.bg-color', '#fff'),
-              }}
-            >
-              {deepGet(settings, 'button.name', '')}
-            </a>
-          </div>
+            {deepGet(settings, 'button.name', '')}
+          </a>
         </div>
       </div>
     </div>

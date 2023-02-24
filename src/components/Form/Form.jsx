@@ -11,16 +11,14 @@ import AnimationBlock from './AnimationBlock/AnimationBlock';
 
 export default function Form({ settings, setSettings }) {
   const onChange = (e) => {
-    const { value, name, checked } = e.target;
+    const { value, name, type, checked } = e.target;
 
-    setSettings(deepSet(settings, name, value));
-
-    /* setSettings((prevState) => {
-      if (type === "checkbox") {
+    setSettings((prevState) => {
+      if (type === 'checkbox') {
         return deepSet(prevState, name, checked);
       }
       return deepSet(prevState, name, value);
-    }); */
+    });
 
     console.log('Settings: ', settings);
   };

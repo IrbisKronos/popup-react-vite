@@ -1,6 +1,3 @@
-.popupWrapper {
-  width: 50%;
-}
 .popup {
   position: fixed;
   width: 50%;
@@ -12,7 +9,7 @@
   visibility: hidden;
   overflow-y: auto;
   overflow-x: hidden;
-  transition: all 0.8s ease 0s; /* run in js */
+  /*transition: all 0.8s ease 0s;  run in js */
 }
 
 .popup.open {
