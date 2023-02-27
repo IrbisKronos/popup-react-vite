@@ -23,10 +23,12 @@
         "content": "",
         "size": "h6"
       },
-      "text": ""
+      "text": "",
+      "bg-color": "#fdeacd"
     },
     "footer": {
-      "text": ""
+      "text": "",
+      "bg-color": "#ddeacd"
     }
   }
 }

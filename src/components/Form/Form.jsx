@@ -8,6 +8,8 @@ import Textarea from './Textarea/Textarea';
 import AlignText from './AlignText/AlignText';
 import Button from './Button/SubmitButton';
 import AnimationBlock from './AnimationBlock/AnimationBlock';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 export default function Form({ settings, setSettings }) {
   const onChange = (e) => {
@@ -59,6 +61,7 @@ export default function Form({ settings, setSettings }) {
               defaultValue={deepGet(settings, 'title.size', '')}
             />
           </Accordion>
+
           <Accordion title='Зміст' symbol='description'>
             <Textarea
               name='text.content'
@@ -70,6 +73,7 @@ export default function Form({ settings, setSettings }) {
             />
             <AlignText onChange={onChange} settings={settings} />
           </Accordion>
+
           <Accordion title='Кнопка' symbol='smart_button'>
             <Input
               name='button.name'
@@ -98,6 +102,7 @@ export default function Form({ settings, setSettings }) {
               defaultValue={deepGet(settings, 'button.bg-color', '')}
             />
           </Accordion>
+
           <Accordion title='Таймер' symbol='timer'>
             <Input
               name='timeout'
@@ -109,9 +114,64 @@ export default function Form({ settings, setSettings }) {
               defaultValue={settings.timeout}
             />
           </Accordion>
+
           <Accordion title='Анімація' symbol='animation'>
             <AnimationBlock />
           </Accordion>
+
+          <Accordion title='Header' symbol='top_panel_close'>
+            <Header>
+              <Input
+                name='header.title.content'
+                type='text'
+                label='Заголовок шапки:'
+                placeholder='Введіть заголовок шапки...'
+                defaultValue={deepGet(settings, 'header.title.content', '')}
+                onChange={onChange}
+              />
+              <Select
+                name='header.title.size'
+                label='Виберіть розмір заголовка шапки:'
+                onChange={onChange}
+                defaultValue={deepGet(settings, 'header.title.size', '')}
+              />
+              <Textarea
+                name='header.text'
+                label='Зміст'
+                placeholder='Введіть зміст шапки банера...'
+                onChange={onChange}
+                defaultValue={deepGet(settings, 'text.content', '')}
+              />
+              <Input
+                name='header.bg-color'
+                type='color'
+                label='Вибрати фон шапки:'
+                onChange={onChange}
+                defaultValue={deepGet(settings, 'header.bg-color', '')}
+              />
+            </Header>
+          </Accordion>
+
+          <Accordion title='Footer' symbol='top_panel_open'>
+            <Footer>
+              <Textarea
+                name='text.content'
+                id='body-text'
+                label='Зміст'
+                placeholder='Введіть зміст підвалу банера...'
+                onChange={onChange}
+                defaultValue={deepGet(settings, 'text.content', '')}
+              />
+            </Footer>
+            <Input
+              name='footer.bg-color'
+              type='color'
+              label='Вибрати фон підвалу:'
+              onChange={onChange}
+              defaultValue={deepGet(settings, 'footer.bg-color', '')}
+            />
+          </Accordion>
+
           <Button type='submit' description='Зберегти' />
         </form>
       </div>

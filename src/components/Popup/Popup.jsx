@@ -17,7 +17,7 @@ export default function Popup({ settings }) {
       setIsOpen(true);
     }, milliseconds);
     return () => clearTimeout(timer);
-  }, [settings.timeout]);
+  }, [settings]);
 
   const handlePopupClose = () => setIsOpen(false);
 
@@ -32,6 +32,7 @@ export default function Popup({ settings }) {
     h6: <h6>{titleContent}</h6>,
   };
   const titleElement = titleSizes[titleSize];
+  console.log('render');
 
   return (
     <div className={clsx('popup', isOpen && 'open')}>
