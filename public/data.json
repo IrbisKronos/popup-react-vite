@@ -2,12 +2,12 @@
   "banner": {
     "title": {
       "content": "Заголовок!!!",
-      "size": "h3"
+      "size": "h5"
     },
     "text": {
       "content": "Ололоіваіваів"
     },
-    "alignText": "center",
+    "alignText": "right",
     "button": {
       "name": "Вперед!",
       "link": "https://www.google.com/",

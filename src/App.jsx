@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 
 export default function App() {
   const [settings, setSettings] = useState({});
+  console.log('render App');
 
   useEffect(() => {
     fetch('/data.json')

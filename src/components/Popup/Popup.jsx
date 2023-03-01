@@ -1,10 +1,12 @@
 import './Popup.css';
 import deepGet from 'lodash/get';
 import clsx from 'clsx';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Popup({ settings }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [animated, setAnimated] = useState(false);
+  const [animationClass, setAnimationClass] = useState(settings.animation);
 
   /* Timer */
   useEffect(() => {
@@ -16,6 +18,7 @@ export default function Popup({ settings }) {
     const timer = setTimeout(() => {
       setIsOpen(true);
     }, milliseconds);
+    console.log('settings in popup-component:', settings);
     return () => clearTimeout(timer);
   }, [settings]);
 
@@ -23,7 +26,7 @@ export default function Popup({ settings }) {
 
   /* Set title size (h2-h6) with title content */
   const titleContent = deepGet(settings, 'title.content', '');
-  const titleSize = deepGet(settings, 'title.size');
+  const titleSize = deepGet(settings, 'title.size', '');
   const titleSizes = {
     h2: <h2>{titleContent}</h2>,
     h3: <h3>{titleContent}</h3>,
@@ -32,17 +35,29 @@ export default function Popup({ settings }) {
     h6: <h6>{titleContent}</h6>,
   };
   const titleElement = titleSizes[titleSize];
-  console.log('render');
+
+  const transitionRef = useRef(null);
+  /* useEffect(() => {
+    const node = transitionRef.current;
+    node.addEventListener('transitionend', () => {
+      settings.animation ? setAnimationClass(settings.animation) : '';
+    });
+  }); */
 
   return (
     <div className={clsx('popup', isOpen && 'open')}>
       <div className='popup__body'>
         <div
-          className='popup__content animate__animated'
+          onTransitionEnd={(e) => setAnimated(true)}
+          className={clsx(
+            'popup__content animate__animated',
+            animated && `${settings.animation}`
+          )}
           style={{
             textAlign: settings.alignText,
             backgroundColor: deepGet(settings, 'background.color'),
           }}
+          ref={transitionRef}
         >
           <button className='popup__close' onClick={handlePopupClose}>
             &times;

@@ -1,4 +1,4 @@
-/* import deepGet from 'lodash/get';
+import deepGet from 'lodash/get';
 import deepSet from 'lodash/set';
 import React, { useCallback, useEffect, useState } from 'react';
 
@@ -34,5 +34,5 @@ export default function DataBound(ComponentClass) {
 
   DataBoundComponent.displayName = `DataBound(${ComponentClass.displayName})`;
 
-  return DataBoundComponent; 
-  }*/
+  return DataBoundComponent;
+}
