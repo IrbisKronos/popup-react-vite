@@ -11,10 +11,10 @@
     "button": {
       "name": "Вперед!",
       "link": "https://www.google.com/",
-      "bg-color": "#fff"
+      "bgColor": "#a3c52b"
     },
     "timeout": "3",
-    "animation": "animate__shakeX",
+    "animation": "animate__heartBeat",
     "background": {
       "color": "#faedcd"
     },

@@ -15,11 +15,11 @@ export default function Form({ settings, setSettings }) {
   const onChange = (e) => {
     const { value, name, type, checked } = e.target;
 
-    setSettings((prevState) => {
+    setSettings((prev) => {
       if (type === 'checkbox') {
-        return deepSet(prevState, name, checked);
+        return deepSet(prev, name, checked);
       }
-      return deepSet(prevState, name, value);
+      return deepSet(prev, name, value);
     });
 
     console.log('Settings: ', settings);
@@ -96,10 +96,9 @@ export default function Form({ settings, setSettings }) {
             <Input
               name='button.bgColor'
               type='color'
-              id='button_bg_color'
               label='Вибрати колір:'
               onChange={onChange}
-              defaultValue={deepGet(settings, 'button.bg-color', '')}
+              value={deepGet(settings, 'button.bgColor', '')}
             />
           </Accordion>
 

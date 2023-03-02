@@ -6,19 +6,28 @@ import { useState, useEffect, useRef } from 'react';
 export default function Popup({ settings }) {
   const [isOpen, setIsOpen] = useState(false);
   const [animated, setAnimated] = useState(false);
-  const [animationClass, setAnimationClass] = useState(settings.animation);
+
+  const transitionRef = useRef();
 
   /* Timer */
   useEffect(() => {
     if (!settings.timeout) {
       return;
     }
+    /* convert seconds to milliseconds */
     const milliseconds = settings.timeout + '000';
 
+    /* add className 'open' */
     const timer = setTimeout(() => {
       setIsOpen(true);
+
+      /* add animationClass after general animation */
+      const node = transitionRef.current;
+      node.addEventListener('transitionend', () => {
+        settings.animation ? setAnimated(true) : setAnimated(false);
+      });
     }, milliseconds);
-    console.log('settings in popup-component:', settings);
+
     return () => clearTimeout(timer);
   }, [settings]);
 
@@ -36,26 +45,17 @@ export default function Popup({ settings }) {
   };
   const titleElement = titleSizes[titleSize];
 
-  const transitionRef = useRef(null);
-  /* useEffect(() => {
-    const node = transitionRef.current;
-    node.addEventListener('transitionend', () => {
-      settings.animation ? setAnimationClass(settings.animation) : '';
-    });
-  }); */
-
   return (
     <div className={clsx('popup', isOpen && 'open')}>
       <div className='popup__body'>
         <div
-          onTransitionEnd={(e) => setAnimated(true)}
           className={clsx(
             'popup__content animate__animated',
             animated && `${settings.animation}`
           )}
           style={{
             textAlign: settings.alignText,
-            backgroundColor: deepGet(settings, 'background.color'),
+            backgroundColor: deepGet(settings, 'background.color', ''),
           }}
           ref={transitionRef}
         >
@@ -63,14 +63,16 @@ export default function Popup({ settings }) {
             &times;
           </button>
           <div className='popup__title'>{titleElement}</div>
+
           <div className='popup__text'>
             {deepGet(settings, 'text.content', '')}
           </div>
+
           <a
             href={deepGet(settings, 'button.link', '')}
             className='popup__link'
             style={{
-              backgroundСolor: deepGet(settings, 'button.bg-color', '#fff'),
+              backgroundColor: deepGet(settings, 'button.bgColor', ''),
             }}
           >
             {deepGet(settings, 'button.name', '')}
