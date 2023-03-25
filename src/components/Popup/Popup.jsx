@@ -6,8 +6,42 @@ import { useState, useEffect, useRef } from 'react';
 export default function Popup({ settings }) {
   const [isOpen, setIsOpen] = useState(false);
   const [animated, setAnimated] = useState(false);
+  const [position, setPosition] = useState({
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+  });
 
   const transitionRef = useRef();
+
+  /* Positioning */
+
+  useEffect(() => {
+    if (!settings.positioning) {
+      return;
+    }
+    const place = settings.positioning;
+    if (place === 'topRight') {
+      setPosition({
+        justifyContent: 'flex-end',
+        alignItems: 'flex-start',
+      });
+    } else if (place === 'bottomRight') {
+      setPosition({
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+      });
+    } else if (place === 'bottomLeft') {
+      setPosition({
+        justifyContent: 'flex-start',
+        alignItems: 'flex-end',
+      });
+    } else if (place === 'topLeft') {
+      setPosition({
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+      });
+    }
+  }, [settings.positioning]);
 
   /* Timer */
   useEffect(() => {
@@ -47,7 +81,7 @@ export default function Popup({ settings }) {
 
   return (
     <div className={clsx('popup', isOpen && 'open')}>
-      <div className='popup__body'>
+      <div className='popup__body' style={position}>
         <div
           className={clsx(
             'popup__content animate__animated',

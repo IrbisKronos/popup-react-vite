@@ -4,7 +4,7 @@ import deepGet from 'lodash/get';
 
 export default function AlignText({ settings, onChange }) {
   return (
-    <div className='segmentedControl' id='align_text_select'>
+    <div className='segmentedControl'>
       <input
         type='radio'
         name='alignText'

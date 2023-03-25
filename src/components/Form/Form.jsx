@@ -8,18 +8,17 @@ import Textarea from './Textarea/Textarea';
 import AlignText from './AlignText/AlignText';
 import Button from './Button/SubmitButton';
 import AnimationBlock from './AnimationBlock/AnimationBlock';
+import Positioning from './Positioning/Positioning';
+import InputRange from './InputRange/InputRange';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 
 export default function Form({ settings, setSettings }) {
   const onChange = (e) => {
     const { value, name, type, checked } = e.target;
-
-    setSettings((prev) => {
-      if (type === 'checkbox') {
-        return deepSet(prev, name, checked);
-      }
-      return deepSet(prev, name, value);
+    const newValue = type === 'checkbox' ? checked : value;
+    setSettings((settings) => {
+      return { ...deepSet(settings, name, newValue) };
     });
 
     console.log('Settings: ', settings);
@@ -116,6 +115,25 @@ export default function Form({ settings, setSettings }) {
 
           <Accordion title='Анімація' symbol='animation'>
             <AnimationBlock />
+          </Accordion>
+
+          <Accordion title='Позиціонування' symbol='top_panel_open'>
+            <Positioning onChange={onChange} settings={settings} />
+          </Accordion>
+
+          <Accordion title='Розміри банера' symbol='top_panel_open'>
+            <InputRange
+              name='size.width'
+              label='Ширина банера:'
+              onChange={onChange}
+              defaultValue={settings.size}
+            />
+            <InputRange
+              name='size.height'
+              label='Висота банера:'
+              onChange={onChange}
+              defaultValue={settings.size}
+            />
           </Accordion>
 
           <Accordion title='Header' symbol='top_panel_close'>
