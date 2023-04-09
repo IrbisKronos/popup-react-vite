@@ -9,7 +9,6 @@ import AlignText from './AlignText/AlignText';
 import Button from './Button/SubmitButton';
 import AnimationBlock from './AnimationBlock/AnimationBlock';
 import Positioning from './Positioning/Positioning';
-import InputRange from './InputRange/InputRange';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 
@@ -122,15 +121,23 @@ export default function Form({ settings, setSettings }) {
           </Accordion>
 
           <Accordion title='Розміри банера' symbol='top_panel_open'>
-            <InputRange
+            <Input
               name='size.width'
+              type='range'
               label='Ширина банера:'
+              min='10'
+              max='100'
+              step='1'
               onChange={onChange}
               defaultValue={settings.size}
             />
-            <InputRange
+            <Input
               name='size.height'
+              type='range'
               label='Висота банера:'
+              min='10'
+              max='100'
+              step='1'
               onChange={onChange}
               defaultValue={settings.size}
             />

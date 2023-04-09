@@ -1,10 +1,13 @@
 .form {
+  position: fixed;
   width: 50%;
+  height: 100%;
   font-family: 'Montserrat', sans-serif;
   background-color: var(--greyLight-1);
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
 }
 .formContainer {
   display: flex;

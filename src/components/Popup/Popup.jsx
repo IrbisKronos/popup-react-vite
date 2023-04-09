@@ -90,6 +90,8 @@ export default function Popup({ settings }) {
           style={{
             textAlign: settings.alignText,
             backgroundColor: deepGet(settings, 'background.color', ''),
+            width: `${deepGet(settings, 'size.width', '')}%`,
+            height: `${deepGet(settings, 'size.height', '')}%`,
           }}
           ref={transitionRef}
         >
