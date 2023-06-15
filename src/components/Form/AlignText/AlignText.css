@@ -11,7 +11,7 @@
 }
 
 .segmentedControl input {
-  /* display: none; */
+  display: none;
 }
 
 .segmentedControl > input:checked + label {

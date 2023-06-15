@@ -9,6 +9,7 @@ import AlignText from './AlignText/AlignText';
 import Button from './Button/SubmitButton';
 import AnimationBlock from './AnimationBlock/AnimationBlock';
 import Positioning from './Positioning/Positioning';
+import Checkbox from './Checkbox/Checkbox';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 
@@ -70,6 +71,14 @@ export default function Form({ settings, setSettings }) {
               defaultValue={deepGet(settings, 'text.content', '')}
             />
             <AlignText onChange={onChange} settings={settings} />
+            <Checkbox />
+            <Input
+              name='text.bold'
+              type='checkbox'
+              label='Жирний'
+              onChange={onChange}
+              value={deepGet(settings, 'text.bold', '')}
+            />
           </Accordion>
 
           <Accordion title='Кнопка' symbol='smart_button'>
